@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Digital Clock</title>
+	<style type="text/css">
+		body{
+			background-color:linen;
+		}
+		h1{
+			text-align: center;
+			font-size: 2.5em;
+			color: darkorange;
+			letter-spacing: 2px;
+			margin-bottom: 6%;
+		}
+
+		.content{
+			width:38%;
+			height:175px;
+			border:3px solid silver;
+			border-radius: 10px;
+			margin:40px auto;
+			background-color: lightgrey;
+		}
+
+		#time{
+			font-size: 4em;
+			text-align: center;
+			text-shadow:2px 2px 5px red;
+			color: white;
+			padding-top: 10px;
+		}
+		
+		#date{
+			font-size: 2.2em;
+			text-align: center;
+			text-shadow:2px 2px 3px red;
+			color: white;
+			padding: 15px;
+		}
+		#space{
+			margin-right: 2%;
+			font-size: 1.7em;
+		}
+
+		#datee,{
+			font-size: 1.2em;
+		}
+		#am_pm{
+			font-size: 0.8em;
+		}
+		#month{
+			font-size: 1.1em;
+		}
+	</style>
+</head>
+<body>
+	<h1>Digital Clock</h1>
+	<div class="content">
+		<form name="clock">
+			<div id="time">
+				<span id="hour"></span> :
+				<span id="minute"></span> :
+				<span id="second"></span>
+				<span id="am_pm"></span>
+			</div>
+			<div id="date">
+				<sup><span id="dayy"></span></sup> <span id="space">/</span>
+				<sup><span id="datee"></span>
+				<sup><span id="subb"></span></sup> -
+				<span id="month"></span> -
+				<span id="year"></span></sup>
+			</div>
+		</form>
+	</div>
+	<footer style="margin-left:80%;margin-top:6%;font-size: 1.2em;">Created by <a href="https://www.facebook.com/Pratul1997" style="text-decoration: none;">Pratul Kumar</a></footer>
+<script type="text/javascript">
+	window.onload = function(){
+						printTime();
+					};
+		function printTime(){
+			var	roman=new Date();
+			var hours = roman.getHours();
+			var mins = roman.getMinutes();
+		    var secs = roman.getSeconds();
+		    var day = roman.getDay();
+		    var date = roman.getDate();
+		    var month = roman.getMonth();
+		    var year = roman.getFullYear();
+		    var sub="";
+		    var am_pm="am";
+
+		    switch(date){
+				case 1:
+					sub = "st";
+				break;
+				case 2:
+					sub = "nd";
+				break;
+				case 3:
+					sub ="rd";
+				break;
+				default :
+					sub ="th";
+			}
+
+			switch(month){
+				case 0:
+					month="Jan";
+				break;
+				case 1:
+					month="Feb";
+				break;
+				case 2:
+					month="Mar";
+				break;
+				case 3:
+					month="Apr";
+				break;
+				case 4:
+					month="May";
+				break;
+				case 5:
+					month="June";
+				break;
+				case 6:
+					month="July";
+				break;
+				case 7:
+					month="Aug";
+				break;
+				case 8:
+					month="Sep";
+				break;
+				case 9:
+					month="Out";
+				break;
+				case 10:
+					month="Nov";
+				break;
+				case 11:
+					month="Dec";
+				break;
+
+			}
+
+	        switch (day){   
+			    case 0:
+		            day = "Sunday";
+		        break;
+			    case 1:
+			        day = "Monday";
+			    break;
+			    case 2:
+			        day = "Tuesday";
+			    break;
+			    case 3:
+			        day = "Wednesday";
+			    break;
+			    case 4:
+			        day = "Thursday";
+			    break;
+			    case 5:
+			         day = "Friday";
+			    break;
+			    case 6:
+			        day = "Saturday";
+			    break;
+			}
+
+			if(hours>=12) {
+				hours=(hours%12);
+				am_pm="pm";
+			}
+			if(mins<10) {
+				mins="0"+mins;
+			}
+
+			if (secs<10) {
+				secs="0"+secs;
+			}
+			if (hours<10) {
+				hours="0"+hours;
+			}
+			document.getElementById("hour").innerHTML = hours;
+			document.getElementById("minute").innerHTML = mins;
+			document.getElementById("second").innerHTML = secs;
+			document.getElementById("am_pm").innerHTML = am_pm;
+			document.getElementById("dayy").innerHTML = day;
+			document.getElementById("dayy").innerHTML = day;
+			document.getElementById("datee").innerHTML = date;
+			document.getElementById("subb").innerHTML = sub;
+			document.getElementById("month").innerHTML = month;
+			document.getElementById("year").innerHTML = year;
+		}
+		setInterval(printTime, 1000);
+</script>
+</body>
+</html>
